@@ -14,7 +14,7 @@ clean:
 	git -c core.excludesfile=/dev/null clean -X -d -f
 
 # target: build                                  - Setup PHP & Node.js locally
-build: vendor tools/vendor
+build: vendor
 
 composer.phar:
 	@php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');";
@@ -33,7 +33,8 @@ mv ${TMP_DIR}/$1 ./dist;
 rm -rf ${TMP_DIR:-/dev/null};
 endef
 
-zip: dist
+# target: zip                                  - Make a distributable zip
+zip: dist build
 	@$(call zip_it,${PACKAGE}.zip)
 
 dist:
