@@ -1,0 +1,10 @@
+config
+src
+vendor
+composer.json
+composer.lock
+ps_accounts.php
+logo.png
+config.xml
+LICENCE
+README.md
