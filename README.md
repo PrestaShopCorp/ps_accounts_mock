@@ -72,7 +72,7 @@ networks:
     driver: bridge
 ```
 
-And the script install-module.sh:
+And the script install-module.sh (tip: make sure it is executable):
 
 ```sh
 set -eu
