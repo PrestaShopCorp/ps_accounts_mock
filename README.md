@@ -14,10 +14,8 @@ Supposing you have a `./e2e-env` folder in your `my_module` PrestaShop module, i
 ```
 ./e2e-env
 ├── docker-compose.yml
-├── init-scripts
-│   ├── install-module.sh
-│   └── ps_accounts (a directory with this repository content)
-└── prestashop.env
+└── init-scripts
+    └── install-module.sh
 ```
 
 ### docker-compose.yml
@@ -77,22 +75,16 @@ networks:
 And the script install-module.sh:
 
 ```sh
-#!/bin/sh
-# As the module sources are directly mounted within prestashop-flashlight
-# it is useful to call some cleaning and manual installation scripts
 set -eu
 
 cd "$PS_FOLDER"
-echo "* [my_module] cleaning tools/vendor..."
-rm -rf "./modules/my_module/tools/vendor"
 echo "* [my_module] installing the module..."
 php -d memory_limit=-1 bin/console prestashop:module --no-interaction install "my_module"
 
-cp -r /tmp/init-scripts/ps_accounts ./modules/
-cd ./modules/ps_accounts
-echo "* [ps_accounts_mock] composer build..."
-composer dump-autoload;
+echo "* [ps_accounts_mock] downloading..."
+wget -q -O /tmp/ps_accounts.zip "https://github.com/PrestaShopCorp/ps_accounts_mock/releases/download/0.0.0/ps_accounts.zip"
+echo "* [ps_accounts_mock] unziping..."
+unzip -qq /tmp/ps_accounts.zip -d /var/www/html/modules
 echo "* [ps_accounts_mock] installing the module..."
-cd "$PS_FOLDER"
 php -d memory_limit=-1 bin/console prestashop:module --no-interaction install "ps_accounts"
 ```
