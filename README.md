@@ -72,7 +72,9 @@ networks:
     driver: bridge
 ```
 
-And the script install-module.sh (tip: make sure it is executable):
+### install-module.sh
+
+> tip: make sure it is executable!
 
 ```sh
 set -eu
@@ -88,3 +90,5 @@ unzip -qq /tmp/ps_accounts.zip -d /var/www/html/modules
 echo "* [ps_accounts_mock] installing the module..."
 php -d memory_limit=-1 bin/console prestashop:module --no-interaction install "ps_accounts"
 ```
+
+Happy testing!
