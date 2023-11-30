@@ -1,7 +1,7 @@
 # PS Accounts Mock
 
 This repository is shared for the solely purpose of providing a ps_accounts mock.
-It does nothing, but help you testin,g your integration with the ps_accounts module.
+It does nothing, but help you integrates with the ps_accounts module.
 
 See: https://packagist.org/packages/prestashop/prestashop-accounts-installer
 
@@ -9,7 +9,7 @@ See: https://packagist.org/packages/prestashop/prestashop-accounts-installer
 
 See: https://github.com/prestashop/prestashop-flashlight
 
-Supposing you have a `./e2e-env` folder in your `my_module` PrestaShop module sources, it may contain:
+Supposing you have a `./e2e-env` folder in your `my_module` PrestaShop module, it may contain:
 
 ```
 ./e2e-env
