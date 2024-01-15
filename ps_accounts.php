@@ -9,7 +9,7 @@ class Ps_accounts extends Module
     /**
      * @var string
      */
-    const VERSION = '0.0.0';
+    const VERSION = '1.0.0';
 
     /**
      * @var \PrestaShop\ModuleLibServiceContainer\DependencyInjection\ServiceContainer

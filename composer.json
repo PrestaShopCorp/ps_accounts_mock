@@ -29,6 +29,7 @@
     }
   },
   "require": {
-    "php": ">=7.1"
+    "php": ">=7.1",
+    "prestashop/module-lib-service-container": "^2.0"
   }
 }
