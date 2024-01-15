@@ -1,6 +1,7 @@
 .PHONY: help clean build version zip
-VERSION ?= 0.0.0
-PACKAGE ?= ps_accounts-${VERSION}-mock
+VERSION ?= v1.0.0
+MODULE = ps_accounts
+PACKAGE ?= ${MODULE}_mock-${VERSION}
 
 # target: default                                - Calling build by default
 default: build
@@ -26,9 +27,9 @@ vendor: composer.phar
 
 define zip_it
 $(eval TMP_DIR := $(shell mktemp -d))
-mkdir -p ${TMP_DIR}/ps_accounts;
-cp -r $(shell cat .zip-contents) ${TMP_DIR}/ps_accounts;
-cd ${TMP_DIR} && zip -9 -r $1 ./ps_accounts;
+mkdir -p ${TMP_DIR}/${MODULE};
+cp -r $(shell cat .zip-contents) ${TMP_DIR}/${MODULE};
+cd ${TMP_DIR} && zip -9 -r $1 ./${MODULE};
 mv ${TMP_DIR}/$1 ./dist;
 rm -rf ${TMP_DIR:-/dev/null};
 endef
