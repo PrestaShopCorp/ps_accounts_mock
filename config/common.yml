@@ -14,3 +14,11 @@ services:
   PrestaShop\Module\PsAccounts\Service\PsAccountsService:
     class: PrestaShop\Module\PsAccounts\Service\PsAccountsService
     public: true
+
+  PrestaShop\Module\PsAccounts\Presenter\PsAccountsPresenter:
+    class: PrestaShop\Module\PsAccounts\Presenter\PsAccountsPresenter
+    public: true
+
+  PrestaShop\Module\PsAccounts\Repository\UserTokenRepository:
+    class: PrestaShop\Module\PsAccounts\Repository\UserTokenRepository
+    public: true
