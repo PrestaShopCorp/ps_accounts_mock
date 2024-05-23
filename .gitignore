@@ -1,3 +1,19 @@
-composer.phar
+.env
 dist/
 vendor/
+
+# Composer
+composer.phar
+/vendor/
+.php_cs.cache
+.php_cs
+install.lock
+composer-setup.php
+
+# Mac OS
+.DS_Store
+
+# Jetbrains
+.idea
+
+*.cache

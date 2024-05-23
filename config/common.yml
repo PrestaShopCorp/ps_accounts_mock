@@ -14,3 +14,7 @@ services:
   PrestaShop\Module\PsAccounts\Service\PsAccountsService:
     class: PrestaShop\Module\PsAccounts\Service\PsAccountsService
     public: true
+
+  PrestaShop\Module\PsAccounts\Api\Client\AccountsClient:
+    class: PrestaShop\Module\PsAccounts\Api\Client\AccountsClient
+    public: true
