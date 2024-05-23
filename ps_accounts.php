@@ -9,7 +9,7 @@ class Ps_accounts extends Module
     /**
      * @var string
      */
-    const VERSION = '1.0.0';
+    const VERSION = '1.0.3';
 
     /**
      * @var \PrestaShop\ModuleLibServiceContainer\DependencyInjection\ServiceContainer
@@ -19,7 +19,7 @@ class Ps_accounts extends Module
     public function __construct()
     {
         $this->name = 'ps_accounts';
-        $this->version = '42.0.0';
+        $this->version = '1.0.3';
         $this->author = 'CloudSync team';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = [
