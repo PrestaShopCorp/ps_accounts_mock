@@ -44,11 +44,6 @@ class Ps_accounts extends Module
 
     public function install()
     {
-        if (parent::install() == false)
-        {
-            return false;
-        }
-
         $db = \Db::getInstance();
         $dbInstallFile = "{$this->getLocalPath()}/sql/install.sql";
         if (!file_exists($dbInstallFile))
@@ -61,7 +56,6 @@ class Ps_accounts extends Module
         {
             return false;
         }
-
         $sql = str_replace(['PREFIX_', 'ENGINE_TYPE'], [_DB_PREFIX_, _MYSQL_ENGINE_], $sql);
         $sql = preg_split("/;\s*[\r\n]+/", trim($sql));
         if (!empty($sql))
@@ -72,7 +66,7 @@ class Ps_accounts extends Module
                 }
             }
         }
-        return true;
+        return parent::install();
     }
 
     public function uninstall()

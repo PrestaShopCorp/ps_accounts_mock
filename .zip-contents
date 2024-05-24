@@ -1,5 +1,6 @@
 config
 src
+sql
 vendor
 ps_accounts.php
 logo.png
