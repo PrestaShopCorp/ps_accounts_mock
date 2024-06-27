@@ -30,9 +30,9 @@ class Ps_accounts extends Module
 
         parent::__construct();
 
-        $this->displayName = $this->trans('PS Accounts Mock', [], 'Modules.Mymodule.Admin');
-        $this->description = $this->trans('Mocking', [], 'Modules.Mymodule.Admin');
-        $this->confirmUninstall = $this->trans('Are you sure you want to uninstall?', [], 'Modules.Mymodule.Admin');
+        $this->displayName = $this->l('PS Accounts Mock', [], 'Modules.Mymodule.Admin');
+        $this->description = $this->l('Mocking', [], 'Modules.Mymodule.Admin');
+        $this->confirmUninstall = $this->l('Are you sure you want to uninstall?', [], 'Modules.Mymodule.Admin');
 
         require_once __DIR__ . '/vendor/autoload.php';
 
