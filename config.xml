@@ -2,7 +2,7 @@
 <module>
     <name>ps_accounts</name>
     <displayName><![CDATA[PrestaShop Accounts Mock]]></displayName>
-    <version><![CDATA[1.0.4]]></version>
+    <version><![CDATA[1.1.0]]></version>
     <description><![CDATA[PS Accounts Mock.]]></description>
     <author><![CDATA[PrestaShop]]></author>
     <tab><![CDATA[administration]]></tab>

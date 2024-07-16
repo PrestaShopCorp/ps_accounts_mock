@@ -1,5 +1,5 @@
 .PHONY: help clean build version zip
-VERSION ?= v1.0.4
+VERSION ?= v1.1.0
 MODULE = ps_accounts
 PACKAGE ?= ${MODULE}_mock-${VERSION}
 
