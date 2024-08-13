@@ -8,9 +8,10 @@ class PsAccountsPresenter
     {
     }
 
-    public function present($name)
+    /**
+     * @return void
+     */
+    public function present()
     {
-	    return $name;
     }
-
 }

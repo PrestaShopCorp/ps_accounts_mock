@@ -9,7 +9,7 @@ class Ps_accounts extends Module
     /**
      * @var string
      */
-    const VERSION = '1.1.0';
+    const VERSION = '0.0.0';
 
     /**
      * @var \PrestaShop\ModuleLibServiceContainer\DependencyInjection\ServiceContainer
@@ -19,7 +19,7 @@ class Ps_accounts extends Module
     public function __construct()
     {
         $this->name = 'ps_accounts';
-        $this->version = '1.1.0';
+        $this->version = '0.0.0';
         $this->author = 'CloudSync team';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = [
@@ -42,33 +42,44 @@ class Ps_accounts extends Module
         );
     }
 
+    /**
+     * @return bool
+     *
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     * @throws Exception
+     */
     public function install()
     {
         $db = \Db::getInstance();
         $dbInstallFile = "{$this->getLocalPath()}/sql/install.sql";
-        if (!file_exists($dbInstallFile))
-        {
+        if (!file_exists($dbInstallFile)) {
             return false;
         }
 
         $sql = \Tools::file_get_contents($dbInstallFile);
-        if (empty($sql) || !is_string($sql))
-        {
+        if (empty($sql) || !is_string($sql)) {
             return false;
         }
         $sql = str_replace(['PREFIX_', 'ENGINE_TYPE'], [_DB_PREFIX_, _MYSQL_ENGINE_], $sql);
         $sql = preg_split("/;\s*[\r\n]+/", trim($sql));
-        if (!empty($sql))
-        {
+        if (!empty($sql)) {
             foreach ($sql as $query) {
                 if (!$db->execute($query)) {
                     return false;
                 }
             }
         }
+
         return parent::install();
     }
 
+    /**
+     * @return bool
+     *
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     */
     public function uninstall()
     {
         if (parent::uninstall() == false) {
@@ -78,6 +89,13 @@ class Ps_accounts extends Module
         return true;
     }
 
+    /**
+     * @param string $serviceName
+     *
+     * @return mixed
+     *
+     * @throws Exception
+     */
     public function getService($serviceName)
     {
         return $this->serviceContainer->getService($serviceName);
