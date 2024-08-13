@@ -14,8 +14,9 @@ class AccountsClient
     }
 
     /**
-     * Mock the original PS Accounts client
-     * @see https://github.com/PrestaShopCorp/ps_accounts/blob/master/src/Api/Client/AccountsClient.php#L221
+     * Mock the original verifyToken
+     * @deprecated
+     * @see https://github.com/PrestaShopCorp/ps_accounts/blob/main/src/Api/Client/AccountsClient.php#L223
      * @return array response
      */
     public function verifyToken()
@@ -28,8 +29,8 @@ class AccountsClient
     }
 
     /**
-     * Mock the original RefreshShopToken 
-     * @see https://github.com/PrestaShopCorp/ps_accounts/blob/master/src/Api/Client/AccountsClient.php#L106C21-L106C37
+     * Mock the original RefreshShopToken
+     * @see https://github.com/PrestaShopCorp/ps_accounts/blob/main/src/Api/Client/AccountsClient.php#L122
      * @return array response
      */
     public function refreshShopToken()
