@@ -1,0 +1,9 @@
+parameters:
+  paths:
+    - ../../src
+    - ../../config
+    - ../../ps_accounts.php
+  reportUnmatchedIgnoredErrors: false
+  ignoreErrors:
+    - identifier: missingType.iterableValue
+  level: 9

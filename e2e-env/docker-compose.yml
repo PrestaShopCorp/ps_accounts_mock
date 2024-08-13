@@ -19,7 +19,7 @@ services:
       - ..:/var/www/html/modules/ps_accounts:rw
       - ./init-scripts:/tmp/init-scripts:ro
       - /var/www/html/modules/ps_accounts/vendor
-      - /var/www/html/modules/ps_accounts/tools/vendor
+      - /var/www/html/modules/ps_accounts/tests/vendor
     environment:
       - PS_DOMAIN=localhost:8000
       - ON_INIT_SCRIPT_FAILURE=fail

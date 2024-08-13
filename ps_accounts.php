@@ -42,6 +42,13 @@ class Ps_accounts extends Module
         );
     }
 
+    /**
+     * @return bool
+     *
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     * @throws Exception
+     */
     public function install()
     {
         $db = \Db::getInstance();
@@ -67,6 +74,12 @@ class Ps_accounts extends Module
         return parent::install();
     }
 
+    /**
+     * @return bool
+     *
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     */
     public function uninstall()
     {
         if (parent::uninstall() == false) {
@@ -76,6 +89,13 @@ class Ps_accounts extends Module
         return true;
     }
 
+    /**
+     * @param string $serviceName
+     *
+     * @return mixed
+     *
+     * @throws Exception
+     */
     public function getService($serviceName)
     {
         return $this->serviceContainer->getService($serviceName);

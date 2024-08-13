@@ -23,7 +23,7 @@ ps_accounts_mock_install() {
   # see multiple mounts on the same files:
   # - ..:/var/www/html/modules/ps_eventbus:rw        => mount all the sources
   # - /var/www/html/modules/ps_eventbus/vendor       => void the specific vendor dir, makint it empty
-  # - /var/www/html/modules/ps_eventbus/tools/vendor => void the specific vendor dev dir, making it empty
+  # - /var/www/html/modules/ps_eventbus/tests/vendor => void the specific vendor dev dir, making it empty
   #
   # That said, we now want our container to have RW access on these directories,
   # and to install the required composer dependencies for the module to work.
@@ -31,7 +31,7 @@ ps_accounts_mock_install() {
   # Other scenarios could be imagined, but this is the best way to avoid writes on a mounted volume,
   # which would not work on a Linux environment (binding a volume), as opposed to a Windows or Mac one (NFS mount).
   chown www-data:www-data ./modules/ps_accounts/vendor
-  chown www-data:www-data ./modules/ps_accounts/tools/vendor
+  chown www-data:www-data ./modules/ps_accounts/tests/vendor
   run_user composer install -n -d ./modules/ps_accounts
 
   echo "* [ps_accounts_mock] installing the module..."
