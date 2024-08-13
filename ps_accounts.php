@@ -46,26 +46,24 @@ class Ps_accounts extends Module
     {
         $db = \Db::getInstance();
         $dbInstallFile = "{$this->getLocalPath()}/sql/install.sql";
-        if (!file_exists($dbInstallFile))
-        {
+        if (!file_exists($dbInstallFile)) {
             return false;
         }
 
         $sql = \Tools::file_get_contents($dbInstallFile);
-        if (empty($sql) || !is_string($sql))
-        {
+        if (empty($sql) || !is_string($sql)) {
             return false;
         }
         $sql = str_replace(['PREFIX_', 'ENGINE_TYPE'], [_DB_PREFIX_, _MYSQL_ENGINE_], $sql);
         $sql = preg_split("/;\s*[\r\n]+/", trim($sql));
-        if (!empty($sql))
-        {
+        if (!empty($sql)) {
             foreach ($sql as $query) {
                 if (!$db->execute($query)) {
                     return false;
                 }
             }
         }
+
         return parent::install();
     }
 

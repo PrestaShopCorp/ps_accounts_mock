@@ -65,6 +65,6 @@ class PsAccountsService
 
     public function getAccountsVueCdn()
     {
-    	return 'test.com';
-    } 
+        return 'test.com';
+    }
 }

@@ -10,7 +10,6 @@ class PsAccountsPresenter
 
     public function present($name)
     {
-	    return $name;
+        return $name;
     }
-
 }

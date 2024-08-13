@@ -7,6 +7,10 @@ PS_VERSION ?= latest
 TESTING_IMAGE ?= prestashop/prestashop-flashlight:${PS_VERSION}
 PS_ROOT_DIR ?= $(shell pwd)/prestashop/prestashop-${PS_VERSION}
 
+export PHP_CS_FIXER_IGNORE_ENV = 1
+export _PS_ROOT_DIR_ ?= ${PS_ROOT_DIR}
+export PATH := ./vendor/bin:./tools/vendor/bin:$(PATH)
+
 # target: default                                - Calling build by default
 default: build
 
@@ -22,7 +26,7 @@ clean:
 
 # target: build                                  - Setup PHP & Node.js locally
 .PHONY: build
-build: vendor
+build: vendor tools/vendor
 
 # target: zip                                  - Make a distributable zip
 .PHONY: zip
@@ -42,6 +46,52 @@ composer.phar:
 vendor: composer.phar
 	./composer.phar install -o;
 
+tools/vendor: composer.phar vendor
+	./composer.phar install --working-dir tools -o;
+
+# target: test                                                 - Static and unit testing
+.PHONY: test
+test: composer-validate lint php-lint phpstan
+
+# target: composer-validate (or docker-composer-validate)      - Validates composer.json and composer.lock
+.PHONY: composer-validate
+composer-validate: vendor
+	@./composer.phar validate --no-check-publish
+docker-composer-validate:
+	@$(call in_docker,make,composer-validate)
+
+# target: lint (or docker-lint)                                - Lint the code and expose errors
+.PHONY: lint docker-lint
+lint: php-cs-fixer php-lint
+docker-lint: docker-php-cs-fixer docker-php-lint
+
+# target: lint-fix (or docker-lint-fix)                        - Automatically fix the linting errors
+.PHONY: lint-fix docker-lint-fix
+lint-fix: php-cs-fixer-fix
+docker-lint-fix: docker-php-cs-fixer-fix
+
+# target: php-cs-fixer (or docker-php-cs-fixer)                - Lint the code and expose errors
+.PHONY: php-cs-fixer docker-php-cs-fixer  
+php-cs-fixer: tools/vendor
+	@php-cs-fixer fix --dry-run --diff;
+docker-php-cs-fixer: tools/vendor
+	@$(call in_docker,make,lint)
+
+# target: php-cs-fixer-fix (or docker-php-cs-fixer-fix)        - Lint the code and fix it
+.PHONY: php-cs-fixer-fix docker-php-cs-fixer-fix
+php-cs-fixer-fix: tools/vendor
+	@php-cs-fixer fix
+docker-php-cs-fixer-fix: tools/vendor
+	@$(call in_docker,make,lint-fix)
+
+# target: php-lint (or docker-php-lint)                        - Lint the code with the php linter
+.PHONY: php-lint docker-php-lint
+php-lint:
+	@find . -type f -name '*.php' -not -path "./vendor/*" -not -path "./tools/*" -not -path "./prestashop/*" -print0 | xargs -0 -n1 php -l -n | (! grep -v "No syntax errors" );
+	@echo "php $(shell php -r 'echo PHP_VERSION;') lint passed";
+docker-php-lint:
+	@$(call in_docker,make,php-lint)
+
 define replace_version
 	echo "Setting up version: ${VERSION}..."
 	sed -i.bak -e "s/\(VERSION = \).*/\1\'${2}\';/" ${1}/${MODULE_NAME}.php
@@ -58,4 +108,12 @@ define zip_it
 	cd ${TMP_DIR} && zip -9 -r $1 ./${MODULE_NAME};
 	mv ${TMP_DIR}/$1 ./dist;
 	rm -rf ${TMP_DIR};
+endef
+
+define in_docker
+	docker run \
+	--rm \
+	--workdir /var/www/html/modules/${MODULE_NAME} \
+	--volume $(shell pwd):/var/www/html/modules/${MODULE_NAME}:rw \
+	--entrypoint $1 ${TESTING_IMAGE} $2
 endef

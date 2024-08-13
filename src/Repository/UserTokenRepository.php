@@ -10,6 +10,6 @@ class UserTokenRepository
 
     public function getOrRefreshToken()
     {
-    	return 'token';
-    } 
+        return 'token';
+    }
 }
