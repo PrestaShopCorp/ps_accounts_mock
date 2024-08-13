@@ -56,7 +56,7 @@ jobs:
       - name: More logs on failure
         if: failure()
         run: |
-          docker compose logs
+          docker compose logs prestashop
           docker compose down -v
         working-directory: e2e-env
 
