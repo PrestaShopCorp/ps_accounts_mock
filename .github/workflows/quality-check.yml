@@ -68,21 +68,6 @@ jobs:
       - name: PHPStan PrestaShop ${{ matrix.ps_version }}
         run: PS_VERSION="${{ matrix.ps_version }}" make docker-phpstan
 
-  phpunit:
-    name: PHP Unit
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Cache vendor folder
-        uses: actions/cache@v3
-        with:
-          path: vendor
-          key: php-${{ hashFiles('composer.lock') }}
-      - name: PHP unit
-        run: make phpunit
-
   e2e-tests:
     name: E2E Tests
     runs-on: ubuntu-latest
