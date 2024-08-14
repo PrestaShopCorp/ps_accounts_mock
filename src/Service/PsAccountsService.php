@@ -74,6 +74,7 @@ class PsAccountsService
 
     /**
      * @deprecated
+     *
      * @return string
      */
     public function getUserUuidV4()
@@ -120,7 +121,7 @@ class PsAccountsService
     {
         return 'test.com';
     }
-    
+
     /**
      * @return string
      */
