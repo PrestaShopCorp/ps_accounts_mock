@@ -6,7 +6,7 @@ parameters:
   reportUnmatchedIgnoredErrors: false
   ignoreErrors:
     - identifier: missingType.iterableValue
-    - '#Property Ps_accounts::$serviceContainer has unknown class PrestaShop\ModuleLibServiceContainer\DependencyInjection\ServiceContainer as its type.#'
+    - '#Property Ps_accounts::\$serviceContainer has unknown class PrestaShop\ModuleLibServiceContainer\DependencyInjection\ServiceContainer as its type.#'
     - '#Instantiated class PrestaShop\ModuleLibServiceContainer\DependencyInjection\ServiceContainer not found.#'
     - '#Call to method getService() on an unknown class PrestaShop\ModuleLibServiceContainer\DependencyInjection\ServiceContainer.#'
   level: 9
