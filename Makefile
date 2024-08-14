@@ -81,7 +81,8 @@ lint: php-cs-fixer php-lint
 docker-lint: docker-php-cs-fixer docker-php-lint
 
 # target: lint-fix (or docker-lint-fix)                        - Automatically fix the linting errors
-.PHONY: lint-fix docker-lint-fix
+.PHONY: lint-fix docker-lint-fix fix
+fix: lint-fix
 lint-fix: php-cs-fixer-fix
 docker-lint-fix: docker-php-cs-fixer-fix
 
