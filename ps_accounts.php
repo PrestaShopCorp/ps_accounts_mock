@@ -1,7 +1,5 @@
 <?php
 
-use PrestaShop\ModuleLibServiceContainer\DependencyInjection\ServiceContainer;
-
 if (!defined('_PS_VERSION_')) {
     exit;
 }
@@ -14,7 +12,7 @@ class Ps_accounts extends Module
     const VERSION = '0.0.0';
 
     /**
-     * @var ServiceContainer
+     * @var \PrestaShop\ModuleLibServiceContainer\DependencyInjection\ServiceContainer
      */
     private $serviceContainer;
 
@@ -38,7 +36,7 @@ class Ps_accounts extends Module
 
         require_once __DIR__ . '/vendor/autoload.php';
 
-        $this->serviceContainer = new ServiceContainer(
+        $this->serviceContainer = new \PrestaShop\ModuleLibServiceContainer\DependencyInjection\ServiceContainer(
             (string) $this->name,
             $this->getLocalPath()
         );
