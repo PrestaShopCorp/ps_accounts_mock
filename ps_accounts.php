@@ -100,4 +100,19 @@ class Ps_accounts extends Module
     {
         return $this->serviceContainer->getService($serviceName);
     }
+
+    public function getParameter($paramName)
+    {
+        switch ($paramName) {
+            case 'ps_accounts.accounts_cdn_url':
+                return '/modules/ps_accounts/views/js/mock_shop_link.js';
+                break;
+
+            default:
+                # code...
+                break;
+        }
+        return null;
+    }
+
 }
