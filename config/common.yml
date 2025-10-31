@@ -26,3 +26,7 @@ services:
   PrestaShop\Module\PsAccounts\Repository\UserTokenRepository:
     class: PrestaShop\Module\PsAccounts\Repository\UserTokenRepository
     public: true
+
+  PrestaShop\Module\PsAccounts\Service\OAuth2\Token\Validator\Validator:
+    class: PrestaShop\Module\PsAccounts\Service\OAuth2\Token\Validator\Validator
+    public: true
