@@ -9,8 +9,6 @@ class Validator
      */
     public function verifyToken($token)
     {
-        print_r($token);
-        die();
         return new DummyToken();
     }
 }
