@@ -167,4 +167,28 @@ class PsAccountsService
     {
         return true;
     }
+
+    /**
+     * @return bool
+     */
+    public function isShopIdentityCreated()
+    {
+        return true;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isShopIdentityVerified()
+    {
+        return true;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isShopPointOfContactSet()
+    {
+        return true;
+    }
 }
