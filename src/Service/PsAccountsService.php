@@ -41,6 +41,17 @@ class PsAccountsService
     }
 
     /**
+     * Mirrors the real ps_accounts API since v7.1.1, where consumers switched from
+     * getOrRefreshToken() to getShopToken().
+     *
+     * @return string
+     */
+    public function getShopToken()
+    {
+        return $this->getOrRefreshToken();
+    }
+
+    /**
      * @return string
      */
     public function getRefreshToken()
