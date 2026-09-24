@@ -15,5 +15,8 @@ class Validator
 
 class DummyToken
 {
-    public string $email = 'foo@bar.com';
+    /**
+     * @var string
+     */
+    public $email = 'foo@bar.com';
 }
